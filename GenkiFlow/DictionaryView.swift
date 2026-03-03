@@ -226,7 +226,6 @@ private struct DictionaryRowView: View {
     }
     
     private func typeColor(_ type: String) -> Color {
-        print(type)
         switch type.lowercased() {
         case "kanji":
             return .blue
