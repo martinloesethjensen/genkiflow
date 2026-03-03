@@ -83,34 +83,39 @@ struct SettingsView: View {
                 Text("This will reset SRS progress for all items. The items themselves will not be deleted.")
             }
             .sheet(isPresented: $showStreakSheet) {
-                NavigationStack {
-                    Form {
-                        Section("Enter New Streak") {
-                            TextField("Streak", value: $tempStreak, format: .number)
-                                .keyboardType(.numberPad)
-                                .onChange(of: tempStreak) { oldValue, newValue in
-                                    tempStreak = newValue
-                                }
+                editStreakSheet
+            }
+        }
+    }
+    
+    private var editStreakSheet: some View {
+        NavigationStack {
+            Form {
+                Section("Enter New Streak") {
+                    // Ensure there is no whitespace or strange wrapping between the TextField and its modifier
+                    TextField("Streak", value: $tempStreak, format: .number)
+                        #if os(iOS)
+                        .keyboardType(.numberPad)
+                        #endif
+                }
+            }
+            .navigationTitle("Edit Streak")
+            #if os(iOS)
+            .navigationBarTitleDisplayMode(.inline)
+            #endif
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { showStreakSheet = false }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        currentStreak = tempStreak
+                        if currentStreak > longestStreak {
+                            longestStreak = currentStreak
                         }
-                    }
-                    .navigationTitle("Edit Streak")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel") { showStreakSheet = false }
-                        }
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("Save") {
-                                currentStreak = tempStreak
-                                if currentStreak > longestStreak {
-                                    longestStreak = currentStreak
-                                }
-                                showStreakSheet = false
-                            }
-                        }
+                        showStreakSheet = false
                     }
                 }
-                .presentationDetents([.height(200)])
             }
         }
     }

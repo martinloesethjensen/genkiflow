@@ -207,7 +207,7 @@ private struct DictionaryRowView: View {
 
             Spacer()
             
-            Text(item.type)
+            Text(item.type.capitalized)
                 .font(.caption2)
                 .padding(.horizontal, 6)
                 .padding(.vertical, 2)
