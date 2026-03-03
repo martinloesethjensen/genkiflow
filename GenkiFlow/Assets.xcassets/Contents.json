@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3068ae11b833a8ea03990d2ea2a2b5fe7b3c47fbda56de956a4b84888f6c6af8
-size 62
+{
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
+}
