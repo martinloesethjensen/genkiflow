@@ -12,6 +12,6 @@ jobs:
       scheme_name: GenkiFlow
       bundle_id: dev.martinloeseth.GenkiFlow
       app_name: GenkiFlow
-      # min_os_version: "16.0"   # optional, defaults to 16.0
+      min_os_version: "18.0"
     secrets:
       ALTSTORE_SOURCE_PAT: ${{ secrets.ALTSTORE_SOURCE_PAT }}
