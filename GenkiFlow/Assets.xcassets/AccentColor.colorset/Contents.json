@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ac2e7a5de74177ab4192e9acdd548373c4c9d9f2dee0aa55988f141146c30d74
-size 118
+{
+  "colors": [
+    {
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  }
+}
